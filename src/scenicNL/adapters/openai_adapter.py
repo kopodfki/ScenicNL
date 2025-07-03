@@ -1,4 +1,4 @@
-from scenicNL.adapters.api_adapter import Scenic3
+﻿from scenicNL.adapters.api_adapter import Scenic3
 from scenicNL.adapters.model_adapter import ModelAdapter
 
 import json
@@ -13,7 +13,8 @@ from scenicNL.common import DISCUSSION_TEMPERATURE, NUM_EXPERTS, LLMPromptType, 
 
 
 class OpenAIModel(Enum):
-    GPT_35_TURBO = "gpt-3.5-turbo-0613"
+    # GPT_35_TURBO = "gpt-3.5-turbo-0613"
+    GPT_35_TURBO = "gpt-3.5-turbo"
     GPT_4 = "gpt-4-0613"
     GPT_4_TURBO = "gpt-4-1106-preview"
     GPT_4_32K = "gpt-4-32k-0613"
@@ -373,6 +374,7 @@ class OpenAIAdapter(ModelAdapter):
         max_length_tokens: int,
         prompt_type: LLMPromptType,
         verbose: bool,
+        max_retries=None,
     ) -> str:
         if prompt_type == LLMPromptType.PREDICT_TOT_THEN_HYDE:
             # 1. Use tree of thought to answer all questions in the prompt

@@ -1,0 +1,4 @@
+Compile rate: 0.0
+Execute rate: 0.0
+API error rate: 100.0
+Secs per program: 0.00054

@@ -1,4 +1,4 @@
-
+﻿
 """
 Scenic3 Mini API Helper Class
 @TODO: [urgent] Make sure that code rewritten by the oneline helper is consistent with the rest of the code!
@@ -132,3 +132,4 @@ class Scenic3:
 
     def get_code(self):
         return "\n".join(self.code).strip()
+

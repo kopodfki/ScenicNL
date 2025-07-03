@@ -1,4 +1,4 @@
-import lmql
+﻿import lmql
 import numpy as np
 import string
 import time
@@ -255,8 +255,8 @@ def generate_reasoning_9b(description, example, towns, vehicles, objects, weathe
     "The user will input python variables that represent values that we will use for a probabilistic program. If any of the values are a list, your task is to replace the list with one of the supported probability distributions specified below. If the values are constants, leave them as is and repeat them in your answer. Use Uniform when the values all have equal probabilities otherwise, use Discrete when some values are more likely than others.\n"
 
     "Distributions:\n"
-    "Uniform(value, …) - Uniform distribution over the values provided. To be used when there is an equal probability of all values.\n"
-    "Discrete([[value: weight, … ]]) - Discrete distribution over the values provided with the given weights. To be used when some values have higher probabilities than others. The weights must add up to 1.\n"
+    "Uniform(value, ...) - Uniform distribution over the values provided. To be used when there is an equal probability of all values.\n"
+    "Discrete([[value: weight, ... ]]) - Discrete distribution over the values provided with the given weights. To be used when some values have higher probabilities than others. The weights must add up to 1.\n"
 
     "Only respond with code as plain text without code block syntax around it\n"
 
@@ -387,7 +387,7 @@ def generate_reasoning_4b(description, example, towns, vehicles, objects, weathe
     "Example 2:\n"
 
     "Original description:\n"
-    "At approximately 12:05 PM, an autonomous BMW i8 convertible was eastbound on University Avenue when it collided with a city bus running a red light at Hamilton Avenue. At the same time, a scooter rider and a bicyclist, legally crossing Hamilton, narrowly avoided the incident, while two pedestrians were nearby on the sidewalk. Despite the BMW’s attempt to avoid the collision through emergency braking and evasive maneuvers, it sustained significant front-end damage, and the bus minor damage on its right side. Three bus passengers reported minor injuries. The complex scenario, involving multiple road users, highlighted the challenges autonomous vehicles face in dynamic urban environments. The primary cause was identified as the bus driver's failure to obey the traffic signal.\n"
+    "At approximately 12:05 PM, an autonomous BMW i8 convertible was eastbound on University Avenue when it collided with a city bus running a red light at Hamilton Avenue. At the same time, a scooter rider and a bicyclist, legally crossing Hamilton, narrowly avoided the incident, while two pedestrians were nearby on the sidewalk. Despite the BMW's attempt to avoid the collision through emergency braking and evasive maneuvers, it sustained significant front-end damage, and the bus minor damage on its right side. Three bus passengers reported minor injuries. The complex scenario, involving multiple road users, highlighted the challenges autonomous vehicles face in dynamic urban environments. The primary cause was identified as the bus driver's failure to obey the traffic signal.\n"
 
     "Relevant objects:\n"
     "1. Autonomous BMW i8 convertible\n"
@@ -549,8 +549,8 @@ def generate_reasoning_6(description, example, towns, vehicles, objects, weather
     "DiscreteRange(low, high) - Uniform distribution over the discreet integer range [[low, high]]\n"
     "Normal(mean, std) - Normal distribution with mean and standard deviation\n"
     "TruncatedNormal(mean, stdDev, low, high) - Normal distribution with mean and standard deviation truncated to the range [[low, high]]\n"
-    "Uniform(value, …) - Uniform distribution over the list of values provided.\n"
-    "Discrete([[value: weight, … ]]) - Discrete distribution over the list of values provided with the given weights (e.g., [[value: 0.5, value: 0.2, value: 0.3]])\n"
+    "Uniform(value, ...) - Uniform distribution over the list of values provided.\n"
+    "Discrete([[value: weight, ... ]]) - Discrete distribution over the list of values provided with the given weights (e.g., [[value: 0.5, value: 0.2, value: 0.3]])\n"
 
     "For weather, Scenic can only support a Uniform or Discrete distribution over the following values: [['ClearNoon', 'CloudyNoon', 'WetNoon', 'WetCloudyNoon', 'SoftRainNoon', 'MidRainyNoon', 'HardRainNoon', 'ClearSunset', 'CloudySunset', 'WetSunset', 'WetCloudySunset', 'SoftRainSunset', 'MidRainSunset', 'HardRainSunset', 'ClearNight', 'CloudyNight', 'WetNight', 'WetCloudyNight', 'SoftRainNight', 'MidRainyNight', 'HardRainNight' ,'DustStorm']]\n"
 
@@ -1191,3 +1191,6 @@ def check_compile(scenic_program):
                 print(error_message)
             works = False
     return works, error_message
+
+
+

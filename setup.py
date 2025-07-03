@@ -1,4 +1,4 @@
-from setuptools import find_packages, setup
+﻿from setuptools import find_packages, setup
 
 setup(
     name="scenicNL",
@@ -56,3 +56,4 @@ setup(
         "Programming Language :: Python :: 3.11",
     ],
 )
+

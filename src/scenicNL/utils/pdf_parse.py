@@ -1,4 +1,4 @@
-from PIL import Image as PI
+﻿from PIL import Image as PI
 import io
 import pdf2image
 import pyocr

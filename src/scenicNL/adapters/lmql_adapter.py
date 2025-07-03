@@ -1,4 +1,4 @@
-from scenicNL.adapters.model_adapter import ModelAdapter
+﻿from scenicNL.adapters.model_adapter import ModelAdapter
 from scenicNL.adapters.api_adapter import Scenic3
 
 import os

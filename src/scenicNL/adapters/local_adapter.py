@@ -1,4 +1,4 @@
-from enum import Enum
+﻿from enum import Enum
 import json
 
 import requests
@@ -109,3 +109,4 @@ class LocalAdapter(ModelAdapter):
                   f"_format_message: {prompt}\n"
                   f"_predict: {content}")
         return content
+

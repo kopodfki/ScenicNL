@@ -1,4 +1,4 @@
-from typing import cast
+﻿from typing import cast
 import click
 import os
 from pathlib import Path
@@ -12,7 +12,29 @@ from scenicNL.common import ModelInput, LLMPromptType, MAX_TOKEN_LENGTH
 from scenicNL.utils.pdf_parse import PDFParser
 import sys
 import time
+import re
 
+def extract_scenic_code(raw_output: str) -> str:
+    """
+    Extracts and cleans Scenic code from LLM output.
+    Removes markdown, expert commentary, decorative lines, etc.
+    """
+    lines = raw_output.splitlines()
+    cleaned = []
+    for line in lines:
+        line = line.strip()
+        if (
+            line.startswith("```") or
+            re.match(r"^[-=]{3,}$", line) or
+            line.lower().startswith("# expert") or
+            line.lower().startswith("# review") or
+            line.lower().startswith("# my scenic program") or
+            line.lower().startswith("###") or
+            "```" in line
+        ):
+            continue
+        cleaned.append(line)
+    return "\n".join(cleaned).strip()
 
 @click.group()
 def main():
@@ -230,7 +252,7 @@ def main(
                     if verbose: print(parsed_text)
                     query_list.append(parsed_text)
     else:
-        with open(query_path) as file:
+        with open(query_path, encoding='utf-8') as file:
             for line in file:
                 query_list.append(line.strip())
     if not verbose: print('Loaded all queries')
@@ -288,11 +310,26 @@ def main(
             else:
                 fstub = f'{index}-{attempt}'
             fstub = fstub[:-4] if fstub.endswith('.txt') else fstub
-            debug = f'{index} - {file_list[index]}'
+            # debug = f'{index} - {file_list[index]}'
+            debug = "<unknown>"
+            if 'file_list' in locals():
+                debug = f'{index} - {file_list[index]}'
+            # fname = os.path.join(scenic_path, f'{fstub}.scenic')
+
+            # with open(fname, 'w') as f:
+            #     f.write(output)
+
             fname = os.path.join(scenic_path, f'{fstub}.scenic')
+            cleaned_output = extract_scenic_code(output)
+            if verbose:
+                print("=== RAW ===")
+                print(output)
+                print("=== CLEANED ===")
+                print(cleaned_output)
 
             with open(fname, 'w') as f:
-                f.write(output)
+                f.write(cleaned_output)
+
             try:
                 ast = scenic.syntax.parser.parse_file(fname)
                 print(f'Compiled input {debug} successfully: {ast}')

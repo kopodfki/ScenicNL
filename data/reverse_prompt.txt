@@ -4,7 +4,9 @@ Recall that Scenic is a domain-specific probabilistic programming language for m
 
 Your description scenario should include relevant details so that one can reconstruct a Scenic program from just your description. No mention of code, scenic, Carla, simulation, constraints, or programs should be part of this description. Assume that the reader of the description has no idea how to read or write programs so they would not understand code references and it should not be overly technical. Assume the reader is someone like a clerk in a law office. The full description should be at most 120 words. Here is an example of a description that is reasonable: 
 "A Cruise autonomous vehicle (“AV”), operating in driverless autonomous mode, was traveling northbound on 2nd Street between Stillman Street and Bryant Street. As the AV was approaching the intersection with Stillman Street, a blue Model 3 Tesla exited out of a parking garage into the AV’s lane of travel. The AV braked and, shortly thereafter, the AV made contact with the Model 3 Tesla, damaging the AV’s front bumper fascia and front passenger side wheel opening molding. The driver of the Model 3 Tesla left the scene without exchanging information. There were no reported injuries. The driver of the Model 3 Tesla later reported damages."
- 
+
+Only return valid Scenic3 code. Do not include explanations, markdown formatting, or commentary. No text or decoration — only code.
+
 This is the Scenic program you should generate a description for:
 ## SET MAP AND MODEL (i.e. definitions of all referenceable vehicle types, road library, etc)
 param map = localPath('../../../assets/maps/CARLA/Town01.xodr')
